@@ -15,6 +15,16 @@ infixr:30 " ∨ " => or
 infix:25 " → " => implies
 infix:20 " ↔ " => iff
 
+section
+  variable (φ ψ : Wff)
+  
+  #check ¬φ
+  #check φ ∧ ψ
+  #check φ ∨ ψ
+  #check φ → ψ
+  #check φ ↔ ψ
+end
+
 inductive ListWff : Type where
   | list (φ : Wff) : ListWff
   | comma (Φ Ψ : ListWff) : ListWff
