@@ -26,13 +26,20 @@ section
 end
 
 inductive ListWff : Type where
-  | list (φ : Wff) : ListWff
-  | comma (Φ Ψ : ListWff) : ListWff
+  | toList (φ : Wff) : ListWff
+  | cons (Φ Ψ : ListWff) : ListWff
 
-export ListWff (list comma)
+export ListWff (toList cons)
 
-prefix:15 "ls" => ListWff.list
-infix:10 ", " => ListWff.comma
+infixr:67 " :: " => ListWff.cons
+
+section
+  variable (φ ψ χ : Wff)
+  
+  #check toList φ
+  #check toList φ :: toList ψ
+  #check toList φ :: toList ψ :: toList χ
+end
 
 inductive Truth : Type where
   | true : Truth
